@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.00784314, 0.776471, 0.117647, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 10, 10, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=18]
+points = PoolVector3Array( -5, 5, 5, 5, 5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, 5, -5, -5, 5, -5, 5, -5, -5, -5, 5, 5, 5, -5, 5, -5, 5, 5, -5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, -5, -5, -5, -5, 5, 5, 5, 5, -5, -5, 5, -5, 5, 5, 5, -5, 5, 5, 5, -5, -5, -5, -5, -5, 5, -5, 5, -5, -5 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.85098, 0.478431, 0, 1 )
+
+[sub_resource type="CubeMesh" id=7]
+material = SubResource( 6 )
+size = Vector3( 10, 10, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=19]
+points = PoolVector3Array( -5, 5, 5, 5, 5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, 5, -5, -5, 5, -5, 5, -5, -5, -5, 5, 5, 5, -5, 5, -5, 5, 5, -5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, -5, -5, -5, -5, 5, 5, 5, 5, -5, -5, 5, -5, 5, 5, 5, -5, 5, 5, 5, -5, -5, -5, -5, -5, 5, -5, 5, -5, -5 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.729412, 0.815686, 0.831373, 1 )
+
+[sub_resource type="CubeMesh" id=12]
+material = SubResource( 11 )
+size = Vector3( 10, 10, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=20]
+points = PoolVector3Array( -5, 5, 5, 5, 5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, 5, -5, -5, 5, -5, 5, -5, -5, -5, 5, 5, 5, -5, 5, -5, 5, 5, -5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, -5, -5, -5, -5, 5, 5, 5, 5, -5, -5, 5, -5, 5, 5, 5, -5, 5, 5, 5, -5, -5, -5, -5, -5, 5, -5, 5, -5, -5 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 0.0666667, 0.282353, 0.776471, 1 )
+
+[sub_resource type="CubeMesh" id=17]
+material = SubResource( 16 )
+size = Vector3( 10, 10, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=21]
+points = PoolVector3Array( -5, 5, 5, 5, 5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, 5, -5, -5, 5, -5, 5, -5, -5, -5, 5, 5, 5, -5, 5, -5, 5, 5, -5, -5, 5, 5, 5, -5, 5, -5, -5, -5, 5, -5, -5, -5, -5, 5, 5, 5, 5, -5, -5, 5, -5, 5, 5, 5, -5, 5, 5, 5, -5, -5, -5, -5, -5, 5, -5, 5, -5, -5 )
+
+[node name="CreateGroundMeshLib" type="GridMap"]
+data = {
+"cells": PoolIntArray(  )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 2, 0 )
+}
+
+[node name="Grass" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Grass"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Grass/StaticBody"]
+shape = SubResource( 18 )
+
+[node name="Dirt" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4394, 0.697172, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Dirt"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Dirt/StaticBody"]
+shape = SubResource( 19 )
+
+[node name="SnowCap" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0194, 0, 0 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="SnowCap"]
+
+[node name="CollisionShape" type="CollisionShape" parent="SnowCap/StaticBody"]
+shape = SubResource( 20 )
+
+[node name="Water" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.2647 )
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Water"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Water/StaticBody"]
+shape = SubResource( 21 )

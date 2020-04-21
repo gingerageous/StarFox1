@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/spaceCraft1.obj-1aa71721a228d20c8612a0505c3ae47c.mesh"
+
+[deps]
+
+files=[ "res://.import/spaceCraft1.obj-1aa71721a228d20c8612a0505c3ae47c.mesh" ]
+
+source_file="res://Enemies/Assets/spaceCraft1.obj"
+dest_files=[ "res://.import/spaceCraft1.obj-1aa71721a228d20c8612a0505c3ae47c.mesh", "res://.import/spaceCraft1.obj-1aa71721a228d20c8612a0505c3ae47c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

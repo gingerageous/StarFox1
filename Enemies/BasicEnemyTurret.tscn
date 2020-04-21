@@ -1,0 +1,80 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Enemies/BasicEnemyTurret.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Assets/metals_0/metall001-new-tileable.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Assets/metals_0/metall001-new-nm.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Assets/metals_0/metall010-new-tileable-bar.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/Assets/metals_0/metall005-new-tileable.png" type="Texture" id=5]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 5.0
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 3 )
+
+[sub_resource type="CylinderMesh" id=3]
+material = SubResource( 2 )
+top_radius = 2.0
+bottom_radius = 5.0
+height = 4.0
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SphereMesh" id=5]
+material = SubResource( 4 )
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="CylinderMesh" id=7]
+material = SubResource( 6 )
+top_radius = 0.5
+height = 4.0
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 1, 0, 0.92549, 1 )
+
+[sub_resource type="PlaneMesh" id=9]
+material = SubResource( 8 )
+size = Vector2( 15, 15 )
+
+[node name="BasicEnemyTurret" type="KinematicBody" groups=[
+"enemy",
+]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 4.20856, 0, 0, 0, 1, 0, 2.23108, 0 )
+shape = SubResource( 1 )
+
+[node name="Base" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Ball" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7408, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Turret" type="MeshInstance" parent="Ball"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0689166, 0.161937, -3.08043 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="Muzzle" type="Position3D" parent="Ball"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0179253, 0.27177, -5.15837 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="RadarMesh" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.2371, 0 )
+layers = 2
+mesh = SubResource( 9 )
+material/0 = null
+[connection signal="timeout" from="ShootTimer" to="." method="_on_Timer_timeout"]

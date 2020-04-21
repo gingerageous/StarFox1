@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/Assets/Ground.meshlib" type="MeshLibrary" id=1]
+
+[node name="WorldTry1" type="Spatial"]
+
+[node name="Ground" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 10, 10, 10 )
+collision_layer = 4
+data = {
+"cells": PoolIntArray(  )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
